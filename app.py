@@ -99,11 +99,25 @@ def recommend(movie):
 
     return recommend_movies, recommend_movies_poster
 
+# def fetch_poster(movie_id):
+#     url = 'https://api.themoviedb.org/3/movie/{}?api_key=e6c9554171b82ef5d5c5ac8782f14c27&language=en-US'.format(movie_id)
+#     response = requests.get(url)
+#     data = response.json()
+#     return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
+
 def fetch_poster(movie_id):
-    url = 'https://api.themoviedb.org/3/movie/{}?api_key=e6c9554171b82ef5d5c5ac8782f14c27&language=en-US'.format(movie_id)
+    url = f'https://api.themoviedb.org/3/movie/{movie_id}?api_key=e6c9554171b82ef5d5c5ac8782f14c27&language=en-US'
     response = requests.get(url)
-    data = response.json()
-    return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
+    if response.status_code == 200:
+        data = response.json()
+        if 'poster_path' in data and data['poster_path']:
+            return "https://image.tmdb.org/t/p/w500/" + data['poster_path']
+        else:
+            return "https://via.placeholder.com/500x750.png?text=Poster+Not+Available"
+    else:
+        return "https://via.placeholder.com/500x750.png?text=API+Error"
+
+
 
 if st.button("Recommend"):
     names, posters = recommend(selected_movie_name)
