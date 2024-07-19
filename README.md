@@ -8,9 +8,9 @@ Streamlit is an open-source Python library that simplifies the creation of custo
 
 To run the project:
 1. Open cmd in the same folder
-2. Open the Jupyter notebook using the command "jupyter notebook"
+2. Open the Jupyter notebook
 3. Run all the cells
-4. Open pycharm and run the project using the command "streamlit app.py run"
+4. Run the project in Pycharm using the command "streamlit app.py run"
 
 [streamlit-app-2024-07-13-23-07-31.webm](https://github.com/user-attachments/assets/95b48614-139b-4f43-aa0d-06aa91a541a8)
 
